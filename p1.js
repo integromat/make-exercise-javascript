@@ -63,5 +63,7 @@ console.log('W02:', w02.person, w02.distance, w02.person === 'Bob' && w02.distan
 
 console.log('\n=== Function 3: get2TopPerformersByType ===');
 const result = get2TopPerformersByType();
-console.log('Top runners: Bob (52.0), Alice (50.0)', result.run?.[0]?.person === 'Bob' && result.run?.[1]?.person === 'Alice' ? '✅' : '❌');
-console.log('Top swimmers: Alice (5.5), Carol (6.5)', result.swim?.[0]?.person === 'Alice' && result.swim?.[1]?.person === 'Carol' ? '✅' : '❌');
+const runPass = result.run?.[0]?.person === 'Bob' && result.run?.[0]?.distance === 52 && result.run?.[1]?.person === 'Alice' && result.run?.[1]?.distance === 50;
+console.log('Top runners:', result.run?.[0]?.person, result.run?.[0]?.distance + ',', result.run?.[1]?.person, result.run?.[1]?.distance, runPass ? '✅' : '❌ (expected: Bob 52, Alice 50)');
+const swimPass = result.swim?.[0]?.person === 'Carol' && result.swim?.[0]?.distance === 6.5 && result.swim?.[1]?.person === 'Alice' && result.swim?.[1]?.distance === 5.5;
+console.log('Top swimmers:', result.swim?.[0]?.person, result.swim?.[0]?.distance + ',', result.swim?.[1]?.person, result.swim?.[1]?.distance, swimPass ? '✅' : '❌ (expected: Carol 6.5, Alice 5.5)');
