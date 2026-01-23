@@ -56,7 +56,7 @@ export function calculateTop3Appearances(activities) {
     .sort((a, b) => b.count - a.count);
 }
 
-export function calculateTeamTotalsByType(activities) {
+export function calculateGroupTotalsByType(activities) {
   const types = getUniqueValues(activities, 'type');
   const results = {};
 
@@ -74,7 +74,7 @@ export function calculateTeamTotalsByType(activities) {
 export function generateStatistics(activities, activityTypes) {
   const types = getUniqueValues(activities, 'type');
 
-  const teamTotals = calculateTeamTotalsByType(activities);
+  const groupTotals = calculateGroupTotalsByType(activities);
 
   const personal = {
     averagePerPerson: {},
@@ -90,7 +90,7 @@ export function generateStatistics(activities, activityTypes) {
   }
 
   return {
-    teamTotals,
+    groupTotals,
     personal
   };
 }

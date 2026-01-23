@@ -1,9 +1,9 @@
-export function formatTeamTotals(teamTotals, activityTypes) {
+export function formatGroupTotals(groupTotals, activityTypes) {
   const lines = [];
 
-  lines.push('=== Team Totals ===\n');
+  lines.push('=== Group Totals ===\n');
 
-  for (const [type, data] of Object.entries(teamTotals)) {
+  for (const [type, data] of Object.entries(groupTotals)) {
     const displayName = activityTypes[type]?.displayName || type;
     lines.push(`${displayName}: ${data.count} activities, ${data.totalDistance}km total`);
   }
@@ -39,7 +39,7 @@ export function formatPersonalStats(title, personalStats, activityTypes) {
 export function formatStatisticsReport(stats, activityTypes) {
   const sections = [];
 
-  sections.push(formatTeamTotals(stats.teamTotals, activityTypes));
+  sections.push(formatGroupTotals(stats.groupTotals, activityTypes));
   sections.push(formatPersonalStats('Average Distance per Person', stats.personal.averagePerPerson, activityTypes));
   sections.push(formatPersonalStats('Personal Bests', stats.personal.personalBests, activityTypes));
   sections.push(formatPersonalStats('Top 3 Weekly Appearances', stats.personal.top3Appearances, activityTypes));
@@ -101,10 +101,10 @@ export function formatActivityTypeSummary(byTypeData, activityTypes) {
   return lines.join('\n');
 }
 
-export function formatConsoleLog(teamTotals) {
+export function formatConsoleLog(groupTotals) {
   const parts = [];
 
-  for (const [type, data] of Object.entries(teamTotals)) {
+  for (const [type, data] of Object.entries(groupTotals)) {
     const typeName = type.charAt(0).toUpperCase() + type.slice(1) + 's';
     parts.push(`${typeName}: ${data.count}, ${data.totalDistance}km`);
   }

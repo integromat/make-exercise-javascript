@@ -16,13 +16,10 @@ function main() {
 
     const stats = generateStatistics(activities, activityTypes);
 
-    console.log(formatConsoleLog(stats.teamTotals));
+    console.log(formatConsoleLog(stats.groupTotals));
 
     const report = formatStatisticsReport(stats, activityTypes);
     console.log('\n' + report);
-
-    console.log('\n=== Full Statistics JSON ===\n');
-    console.log(JSON.stringify(stats, null, 2));
 
   } catch (error) {
     console.error('Error generating statistics:');
